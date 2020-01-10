@@ -81,7 +81,7 @@ public class UserController {
         return new Response<>(200,true,userDTO);
     }
 
-    @ApiOperation(value = "Sekreterin öğretmen eklemesini sağlar")
+    @ApiOperation(value = "Admin'in user eklemesini sağlar")
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public Response<UserDTO> addUser(@Valid @RequestBody Users requestUser, BindingResult bindingResult) {
         BindingValidator.validate(bindingResult);
