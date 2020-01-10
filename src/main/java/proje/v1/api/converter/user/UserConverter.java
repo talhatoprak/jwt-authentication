@@ -10,28 +10,15 @@ import proje.v1.api.dto.user.UserDTO;
 public class UserConverter implements Converter<Users, UserDTO> {
     @Override
     public UserDTO convert(Users user) {
-        BaseModel dtoUser = getUserJobFrom(user);
         return new UserDTO(
                 user.getUsername(),
                 user.getEmail(),
                 user.getName(),
                 user.getSurname(),
                 user.getUserRole(),
-                dtoUser,
                 user.getImgURL()
         );
     }
 
-    private BaseModel getUserJobFrom(Users users){
-        switch (users.getUserRole()){
-            case Student:
-                return users.getStudent();
-            case Teacher:
-                return users.getTeacher();
-            case Secretary:
-                return users.getSecretary();
-            default:
-                return null; // böyle bir ihtimal mümkün değil
-        }
-    }
+
 }

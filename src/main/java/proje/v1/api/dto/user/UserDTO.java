@@ -18,6 +18,5 @@ public class UserDTO {
     private String name;
     private String surname;
     private UserRole userRole;
-    private BaseModel user;
     private  String imageUrl;
 }

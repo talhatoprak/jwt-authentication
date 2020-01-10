@@ -3,9 +3,6 @@ package proje.v1.api.domian.user;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import proje.v1.api.domian.secretary.Secretary;
-import proje.v1.api.domian.teacher.Teacher;
-import proje.v1.api.domian.student.Student;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -24,12 +21,6 @@ public class Users {
     private String surname;
     @Enumerated(EnumType.STRING)
     private UserRole userRole;
-    @OneToOne
-    private Teacher teacher;
-    @OneToOne
-    private Secretary secretary;
-    @OneToOne
-    private Student student;
     private Date createdAt;
     private Date updatedAt;
     private String imgURL;
