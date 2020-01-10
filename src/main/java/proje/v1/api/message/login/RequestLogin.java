@@ -13,8 +13,8 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 public class RequestLogin {
 
-    @NotNull @Size(min = 6, max = 30)
+    @NotNull @Size(min = 3, max = 30)
     private String username;
-    @NotNull @Size(min = 6, max = 25)
+    @NotNull @Size(min = 3, max = 25)
     private String password;
 }

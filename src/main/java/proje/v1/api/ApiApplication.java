@@ -34,7 +34,7 @@ public class ApiApplication extends SpringBootServletInitializer {
 		Users user1 = new Users("user",Crypt.hashWithSha256("user"),"Jhon", "Doe");
 		user1.setEmail("jhondoe@gmail.com");
 		user1.setImgURL("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSZkd2LNMM1RoBqQ1dOHQvZ-HaHbsc7rKqqg8AARIQYpMFAWQx0");
-		user1.setUserRole(UserRole.Teacher);
+		user1.setUserRole(UserRole.Admin);
 		userService.save(user1);
 	}
 

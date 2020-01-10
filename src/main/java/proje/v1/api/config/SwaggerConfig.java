@@ -26,7 +26,7 @@ public class SwaggerConfig {
 
     private ApiInfo apiEndPointsInfo() {
         return new ApiInfoBuilder()
-                .title("Yazılım Mühendisliği Güncel Konular Proje REST API")
+                .title("JWT Authentication REST API")
                 .version("1.0.0")
                 .build();
     }

@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import proje.v1.api.common.util.Crypt;
 import proje.v1.api.config.auth.ContextHolder;
 import proje.v1.api.common.messages.Response;
 import proje.v1.api.common.util.BindingValidator;
@@ -34,6 +35,10 @@ public class UserController {
     private RoleService roleService;
     @Autowired
     private TemporaryTokenHolderService temporaryTokenHolderService;
+
+    private final String ADMIN ="Admin";
+
+
 
     @ApiOperation(value = "Kullanıcının şifre değiştirmesini sağlar")
     @RequestMapping(value = "/changePassword", method = RequestMethod.POST)
@@ -74,5 +79,16 @@ public class UserController {
         Users user = userService.resetPasswordAndGetUser(token, requestPasswordChange.getNewPassword());
         UserDTO userDTO = userConverter.convert(user);
         return new Response<>(200,true,userDTO);
+    }
+
+    @ApiOperation(value = "Sekreterin öğretmen eklemesini sağlar")
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
+    public Response<UserDTO> addUser(@Valid @RequestBody Users requestUser, BindingResult bindingResult) {
+        BindingValidator.validate(bindingResult);
+        requestUser.setPassword(Crypt.hashWithSha256(requestUser.getPassword()));
+        roleService.validatePermission(ContextHolder.user, ADMIN);
+        Users user = userService.saveAndGet(requestUser);
+        UserDTO userDTO = userConverter.convert(user);
+        return new Response<>(201, true, userDTO);
     }
 }
