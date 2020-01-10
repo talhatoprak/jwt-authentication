@@ -1,2 +1,1 @@
-# YMGK-Backend
-
+# JWT Authentication with Java Spring Boot
